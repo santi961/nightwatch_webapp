@@ -511,7 +511,10 @@ def update_smartsheet():
         #st.write(f"Updating {df_diff['Client Team'][idx]} Score")
 
         diff_row_id = int(df_diff['row_id'][idx])
-        diff_game_result = int(df_diff['Game Result'][idx])
+        try:
+            diff_game_result = int(df_diff['Game Result'][idx])
+        except Exception:
+            diff_game_result = ''
         #print(type(diff_row_id),type(diff_game_result))
         update_smartsheet_go(diff_row_id,diff_game_result)
         #print(df_diff['row_id'][idx],df_diff['Game Result'][idx])
